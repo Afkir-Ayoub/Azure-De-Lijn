@@ -30,13 +30,10 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Terraform Init
-        run: terraform -chdir:./terraform init
-
-      - name: Terraform Validate
-        run: terraform -chdir:./terraform validate
+        run: terraform -chdir=./terraform init
 
       - name: Terraform Plan
-        run: terraform -chdir:./terraform plan -out=tfplan
+        run: terraform -chdir=./terraform plan -out=tfplan
 
       - name: Terraform Apply
-        run: terraform -chdir:./terraform apply -auto-approve tfplan
+        run: terraform -chdir=./terraform apply -auto-approve tfplan
