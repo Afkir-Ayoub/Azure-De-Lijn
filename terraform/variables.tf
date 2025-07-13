@@ -10,13 +10,13 @@ variable "location" {
   default     = "West Europe"
 }
 
-variable "delijn_api_key_realtime" {
+variable "DE_LIJN_API_KEY_REALTIME" {
   type        = string
   description = "The API key for the De Lijn Realtime API."
   sensitive   = true
 }
 
-variable "delijn_api_key_static" {
+variable "DE_LIJN_API_KEY_STATIC" {
   type        = string
   description = "The API key for the De Lijn Static API."
   sensitive   = true
