@@ -1,3 +1,12 @@
+# Log Analytics Workspace that Application Insights will use for logs
+resource "azurerm_log_analytics_workspace" "la" {
+  name                = "log-${var.project_name}-ingest"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+}
+
 # Storage account for Function app state.
 resource "azurerm_storage_account" "func_storage" {
   name                     = "st${var.project_name}func01"
@@ -13,6 +22,7 @@ resource "azurerm_application_insights" "app_insights" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   application_type    = "web"
+  workspace_id        = azurerm_log_analytics_workspace.la.id
 }
 
 # Service Plan for Function App
