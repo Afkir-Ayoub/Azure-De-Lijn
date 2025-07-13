@@ -12,6 +12,10 @@ permissions:
   id-token: write
   contents: read
 
+env:
+    TF_VAR_DE_LIJN_API_KEY_REALTIME: ${{ secrets.DE_LIJN_API_KEY_REALTIME }}
+    TF_VAR_DE_LIJN_API_KEY_STATIC: ${{ secrets.DE_LIJN_API_KEY_STATIC }}
+
 jobs:
   terraform:
     name: 'Terraform Deploy'
