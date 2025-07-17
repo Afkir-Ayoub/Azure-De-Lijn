@@ -28,7 +28,7 @@ jobs:
 
       - name: Deploy Databricks Notebooks
         run: |
-          databricks workspace import_dir src/databricks /delijn_project --overwrite
+          databricks workspace import-dir src/databricks /delijn_project --overwrite
 
       - name: Find existing job ID
         id: find_job
