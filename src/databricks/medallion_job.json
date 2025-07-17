@@ -4,7 +4,7 @@
         {
             "task_key": "Bronze_Task",
             "notebook_task": {
-                "notebook_path": "delijn_project/10_bronze.py"
+                "notebook_path": "/Workspace/Users/ayouby5712@hotmail.com/Azure-De-Lijn/src/databricks/10_bronze"
             },
             "job_cluster_key": "medallion_cluster"
         },
@@ -16,7 +16,7 @@
                 }
             ],
             "notebook_task": {
-                "notebook_path": "delijn_project/20_silver.py"
+                "notebook_path": "/Workspace/Users/ayouby5712@hotmail.com/Azure-De-Lijn/src/databricks/20_silver"
             },
             "job_cluster_key": "medallion_cluster"
         },
@@ -28,7 +28,7 @@
                 }
             ],
             "notebook_task": {
-                "notebook_path": "delijn_project/30_gold.py"
+                "notebook_path": "/Workspace/Users/ayouby5712@hotmail.com/Azure-De-Lijn/src/databricks/30_gold"
             },
             "job_cluster_key": "medallion_cluster"
         }
