@@ -17,7 +17,7 @@ env:
     JOB_NAME: "Medallion-Pipeline-CI-CD"
 
 jobs:
-  deploy:
+  deploy-databricks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
