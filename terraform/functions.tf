@@ -59,6 +59,9 @@ resource "azurerm_linux_function_app" "func_app" {
     "EVENT_HUB_CONNECTION_STRING": azurerm_eventhub_namespace.ehns.default_primary_connection_string,
     "EVENT_HUB_NAME": azurerm_eventhub.realtime.name,
     "DE_LIJN_API_KEY_REALTIME": var.DE_LIJN_API_KEY_REALTIME,
-    "DE_LIJN_API_KEY_STATIC":   var.DE_LIJN_API_KEY_STATIC
+    "DE_LIJN_API_KEY_STATIC":   var.DE_LIJN_API_KEY_STATIC,
+    "REALTIME_API_URL": "https://api.delijn.be/gtfs/v3/realtime?json=true",
+    "STATIC_GTFS_API_URL": "https://api.delijn.be/gtfs/static/v3/gtfs_transit.zip",
+    "BRONZE_CONTAINER_NAME": azurerm_storage_container.bronze.name,
   }
 }
