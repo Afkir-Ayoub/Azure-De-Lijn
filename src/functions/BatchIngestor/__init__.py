@@ -7,8 +7,8 @@ from azure.storage.blob import BlobServiceClient
 
 ADLS_CONNECTION_STRING = os.environ["ADLS_CONNECTION_STRING"]
 DE_LIJN_API_KEY_STATIC = os.environ["DE_LIJN_API_KEY_STATIC"]
-STATIC_GTFS_API_URL = "https://api.delijn.be/gtfs/static/v3/gtfs_transit.zip"
-BRONZE_CONTAINER_NAME = "bronze"
+STATIC_GTFS_API_URL = os.environ["STATIC_GTFS_API_URL"]
+BRONZE_CONTAINER_NAME = os.environ["BRONZE_CONTAINER_NAME"]
 
 def main(mytimer: func.TimerRequest) -> None:
     utc_timestamp = datetime.now(timezone.utc)
