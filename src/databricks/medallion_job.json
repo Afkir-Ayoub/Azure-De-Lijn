@@ -1,0 +1,46 @@
+{
+    "name": "Medallion-Pipeline-CI-CD",
+    "tasks": [
+        {
+            "task_key": "Bronze_Task",
+            "notebook_task": {
+                "notebook_path": "/delijn_project/10_bronze.py"
+            },
+            "job_cluster_key": "medallion_cluster"
+        },
+        {
+            "task_key": "Silver_Task",
+            "depends_on": [
+                {
+                    "task_key": "Bronze_Task"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "/delijn_project/20_silver.py"
+            },
+            "job_cluster_key": "medallion_cluster"
+        },
+        {
+            "task_key": "Gold_Task",
+            "depends_on": [
+                {
+                    "task_key": "Silver_Task"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "/delijn_project/30_gold.py"
+            },
+            "job_cluster_key": "medallion_cluster"
+        }
+    ],
+    "job_clusters": [
+        {
+            "job_cluster_key": "medallion_cluster",
+            "new_cluster": {
+                "spark_version": "13.3.x-scala2.12",
+                "node_type_id": "Standard_F4s",
+                "num_workers": 1
+            }
+        }
+    ]
+}
