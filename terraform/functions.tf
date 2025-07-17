@@ -57,6 +57,7 @@ resource "azurerm_linux_function_app" "func_app" {
     "APPLICATIONINSIGHTS_CONNECTION_STRING": azurerm_application_insights.app_insights.connection_string,
     "ADLS_CONNECTION_STRING": azurerm_storage_account.adls.primary_connection_string,
     "EVENT_HUB_CONNECTION_STRING": azurerm_eventhub_namespace.ehns.default_primary_connection_string,
+    "EVENT_HUB_NAME": azurerm_eventhub.realtime.name,
     "DE_LIJN_API_KEY_REALTIME": var.DE_LIJN_API_KEY_REALTIME,
     "DE_LIJN_API_KEY_STATIC":   var.DE_LIJN_API_KEY_STATIC
   }
