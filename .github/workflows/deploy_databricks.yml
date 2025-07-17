@@ -15,7 +15,6 @@ env:
     DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
     DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
     JOB_NAME: "Medallion-Pipeline-CI-CD"
-    TARGET_PATH: ${{ secrets.DATABRICKS_USER_PATH }}/delijn_project
 
 jobs:
   deploy-databricks:
@@ -29,7 +28,7 @@ jobs:
 
       - name: Deploy Databricks Notebooks
         run: |
-          databricks workspace import-dir src/databricks ${{env.TARGET_PATH}} --overwrite
+          databricks workspace import-dir src/databricks /delijn_project --overwrite
 
       - name: Find existing job ID
         id: find_job
