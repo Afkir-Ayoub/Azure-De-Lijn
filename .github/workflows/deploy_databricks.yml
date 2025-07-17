@@ -33,15 +33,16 @@ jobs:
       - name: Find existing job ID
         id: find_job
         run: |
-          JOB_ID=$(databricks jobs list --name ${{env.JOB_NAME}} --output JSON | jq -r '.jobs[0].job_id // empty')
+          JOB_ID=$(databricks jobs list --name ${{env.JOB_NAME}} --output JSON | jq -r '.[0].job_id // empty')
           echo "JOB_ID=$JOB_ID" >> $GITHUB_ENV
 
       - name: Create or Update Databricks Job
         run: |
           if [ -z "${{ env.JOB_ID }}" ]; then
             echo "Creating new job..."
-            databricks jobs create --json-file src/databricks/medallion_job.json
+            databricks jobs create --json @src/databricks/medallion_job.json
           else
             echo "Updating existing job ${{ env.JOB_ID }}..."
-            databricks jobs reset --job-id ${{ env.JOB_ID }} --json-file src/databricks/medallion_job.json
+            RESET_JSON=$(jq --argjson j_id ${{ env.JOB_ID }} '{ "job_id": $j_id, "new_settings": . }' src/databricks/medallion_job.json)
+            databricks jobs reset --json "${RESET_JSON}"
           fi
