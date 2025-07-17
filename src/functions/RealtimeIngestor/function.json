@@ -9,13 +9,6 @@
       "methods": ["get"]
     },
     {
-      "type": "eventHub",
-      "direction": "out",
-      "name": "eventHubMessage",
-      "eventHubName": "evh-vehicle-updates",
-      "connection": "EVENT_HUB_CONNECTION_STRING"
-    },
-    {
       "type": "http",
       "direction": "out",
       "name": "$return"
