@@ -1,0 +1,47 @@
+name: 'Deploy Databricks Assets'
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/databricks/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+    DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+    DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+    JOB_NAME: "Medallion-Pipeline-CI-CD"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Setup Databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: Deploy Databricks Notebooks
+        run: |
+          databricks workspace import_dir src/databricks /delijn_project --overwrite
+
+      - name: Find existing job ID
+        id: find_job
+        run: |
+          JOB_ID=$(databricks jobs list --name ${{env.JOB_NAME}} --output JSON | jq -r '.jobs[0].job_id // empty')
+          echo "JOB_ID=$JOB_ID" >> $GITHUB_ENV
+
+      - name: Create or Update Databricks Job
+        run: |
+          if [ -z "${{ env.JOB_ID }}" ]; then
+            echo "Creating new job..."
+            databricks jobs create --json-file src/databricks/medallion_job.json
+          else
+            echo "Updating existing job ${{ env.JOB_ID }}..."
+            databricks jobs reset --job-id ${{ env.JOB_ID }} --json-file src/databricks/medallion_job.json
+          fi

@@ -9,7 +9,6 @@ on:
   workflow_dispatch:
 
 permissions:
-  id-token: write
   contents: read
 
 jobs:
@@ -19,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
 
       - name: 'Set up Python 3.12'
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@main
         with:
           python-version: 3.12
 
@@ -33,12 +32,12 @@ jobs:
           zip -r ../../release.zip .
 
       - name: Login to Azure
-        uses: azure/login@v1
+        uses: azure/login@master
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: 'Deploy to Azure Functions'
-        uses: Azure/functions-action@v1
+        uses: Azure/functions-action@master
         with:
           app-name: 'func-delijn-ingest'
           package: 'release.zip'

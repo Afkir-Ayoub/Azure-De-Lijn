@@ -9,7 +9,6 @@ on:
   workflow_dispatch: 
 
 permissions:
-  id-token: write
   contents: read
 
 env:
@@ -23,13 +22,13 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@main
 
       - name: Login to Azure
-        uses: azure/login@v1
+        uses: azure/login@master
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
