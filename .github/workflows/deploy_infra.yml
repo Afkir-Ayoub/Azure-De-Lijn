@@ -28,7 +28,7 @@ jobs:
         uses: hashicorp/setup-terraform@main
 
       - name: Login to Azure
-        uses: azure/login@master
+        uses: azure/login@v2.3.0
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
