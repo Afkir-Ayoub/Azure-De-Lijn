@@ -32,12 +32,12 @@ jobs:
           zip -r ../../release.zip .
 
       - name: Login to Azure
-        uses: azure/login@master
+        uses: azure/login@v2.3.0
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: 'Deploy to Azure Functions'
-        uses: Azure/functions-action@master
+        uses: azure/functions-action@v1.5.3
         with:
           app-name: 'func-delijn-ingest'
           package: 'release.zip'
