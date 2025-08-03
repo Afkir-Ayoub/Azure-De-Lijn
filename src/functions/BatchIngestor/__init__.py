@@ -28,8 +28,7 @@ def main(mytimer: func.TimerRequest) -> None:
         logging.info("Successfully downloaded GTFS data.")
 
         # Upload to ADLS Gen 2
-        today_str = utc_timestamp.strftime('%Y-%m-%d')
-        blob_name = f"gtfs/{today_str}/gtfs_transit.zip"
+        blob_name = f"gtfs/gtfs_transit.zip"
 
         blob_service_client = BlobServiceClient.from_connection_string(ADLS_CONNECTION_STRING)
         blob_client = blob_service_client.get_blob_client(container=BRONZE_CONTAINER_NAME, blob=blob_name)

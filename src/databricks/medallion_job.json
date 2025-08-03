@@ -39,7 +39,14 @@
             "new_cluster": {
                 "spark_version": "16.4.x-scala2.13",
                 "node_type_id": "Standard_F4s",
-                "num_workers": 1
+                "num_workers": 1,
+                "libraries": [
+                    {
+                        "maven": {
+                            "coordinates": "com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22"
+                        }
+                    }
+                ]
             }
         }
     ]
