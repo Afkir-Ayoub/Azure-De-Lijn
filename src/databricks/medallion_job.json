@@ -19,18 +19,6 @@
                 "notebook_path": "/Workspace/Users/ayouby5712@hotmail.com/Azure-De-Lijn/src/databricks/20_silver"
             },
             "job_cluster_key": "medallion_cluster"
-        },
-        {
-            "task_key": "Gold_Task",
-            "depends_on": [
-                {
-                    "task_key": "Silver_Task"
-                }
-            ],
-            "notebook_task": {
-                "notebook_path": "/Workspace/Users/ayouby5712@hotmail.com/Azure-De-Lijn/src/databricks/30_gold"
-            },
-            "job_cluster_key": "medallion_cluster"
         }
     ],
     "job_clusters": [
