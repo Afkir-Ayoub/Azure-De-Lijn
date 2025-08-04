@@ -28,7 +28,6 @@
                 "spark_version": "16.4.x-scala2.13",
                 "node_type_id": "Standard_D4ds_v5",
                 "is_single_node": true,
-                "num_workers": 1,
                 "libraries": [
                     {
                         "maven": {
