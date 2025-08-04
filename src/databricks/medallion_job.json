@@ -6,7 +6,14 @@
             "notebook_task": {
                 "notebook_path": "/Workspace/Users/ayouby5712@hotmail.com/Azure-De-Lijn/src/databricks/10_bronze"
             },
-            "job_cluster_key": "medallion_cluster"
+            "job_cluster_key": "medallion_cluster",
+            "libraries": [
+                {
+                    "maven": {
+                        "coordinates": "com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22"
+                    }
+                }
+            ]
         },
         {
             "task_key": "Silver_Task",
@@ -34,14 +41,7 @@
                 },
                 "custom_tags": {
                     "ResourceClass": "SingleNode"
-                },
-                "libraries": [
-                    {
-                        "maven": {
-                            "coordinates": "com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22"
-                        }
-                    }
-                ]
+                }
             }
         }
     ]
