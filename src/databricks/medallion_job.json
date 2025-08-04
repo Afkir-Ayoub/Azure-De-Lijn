@@ -10,7 +10,7 @@
             "libraries": [
                 {
                     "maven": {
-                        "coordinates": "com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22"
+                        "coordinates": "com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.21"
                     }
                 }
             ]
