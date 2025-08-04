@@ -27,8 +27,14 @@
             "new_cluster": {
                 "spark_version": "16.4.x-scala2.13",
                 "node_type_id": "Standard_D4ds_v5",
-                "is_single_node": true,
                 "num_workers": 0,
+                "spark_conf": {
+                    "spark.databricks.cluster.profile": "singleNode",
+                    "spark.master": "local[*]"
+                },
+                "custom_tags": {
+                    "ResourceClass": "SingleNode"
+                },
                 "libraries": [
                     {
                         "maven": {
